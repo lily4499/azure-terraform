@@ -28,8 +28,9 @@ pipeline {
             steps {
                 script {
                     sh 'terraform plan -out=tfplan -input=false \
-                        -var "acr_name=$ACR_NAME" \
-                        -var "aks_name=$AKS_NAME"'
+                          -var="acr_name=demo_ecr" \
+                          -var="aks_name=demo_aks" \
+                          -var="resource_group_name=my_resource_group"'
                 }
             }
         }
