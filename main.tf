@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "arg" {
   name     = var.resource_group_name
-  location = var.resource_group_region
+  location = var.azure_region
 }
 
 resource "azurerm_container_registry" "acr" {
