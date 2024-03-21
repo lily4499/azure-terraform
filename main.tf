@@ -28,4 +28,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count = 2
     vm_size    = "Standard_D2_v2"
   }
+  service_principal {
+    client_id     = var.service_principal_client_id
+    client_secret = var.service_principal_client_secret
+  }
 }
