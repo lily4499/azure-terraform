@@ -27,9 +27,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'terraform plan -out=tfplan -input=false \
-                        -var "acr_name=$ACR_NAME" \
-                        -var "aks_name=$AKS_NAME"'
+                    sh 'terraform plan '
                 }
             }
         }
