@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    parameters {
+        choice(name: 'TERRAFORM_ACTION', choices: ['apply', 'destroy'], description: 'Select Terraform action to perform')
+    }
     
     environment {
         AZURE_CREDENTIALS_ID = 'azure-sp-credentials'
@@ -36,10 +40,16 @@ pipeline {
             }
         }
         
-        stage('Terraform Apply') {
+         stage('Terraform Action') {
             steps {
                 script {
-                    sh 'terraform apply -input=false tfplan'
+                    if (params.TERRAFORM_ACTION == 'apply') {
+                        sh 'terraform apply -auto-approve'
+                    } else if (params.TERRAFORM_ACTION == 'destroy') {
+                        sh 'terraform destroy -auto-approve'
+                    } else {
+                        error 'Invalid Terraform action specified!'
+                    }
                 }
             }
         }
