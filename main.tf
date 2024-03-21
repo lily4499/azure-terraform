@@ -2,6 +2,13 @@ provider "azurerm" {
   features {}
 }
 
+# Create a resource group
+
+resource "azurerm_resource_group" "arg" {
+  name     = var.resource_group_name
+  location = var.resource_group_region
+}
+
 resource "azurerm_container_registry" "acr" {
   name                     = var.acr_name
   resource_group_name      = var.resource_group_name
