@@ -5,21 +5,20 @@ pipeline {
         choice(name: 'TERRAFORM_ACTION', choices: ['apply', 'destroy'], description: 'Select Terraform action to perform')
     }
     
-    environment {
-        AZURE_CREDENTIALS_ID = 'azure-sp-credentials'
-        AZURE_RESOURCE_GROUP = 'lili-rg'
-        AZURE_REGION = 'eastus'
-        ACR_NAME = 'demo_ecr'
-        AKS_NAME = 'demo_aks'
-    }
-    
     stages {
+     //   stage('Azure Login') {
+          //  steps {
+                // Authenticate using Azure CLI with user credentials
+               // sh 'az login'
+      //      }
+     //   }
+        
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/lily4499/azure-terraform.git'
             }
         }
-        
+
         stage('Terraform Init') {
             steps {
                 script {
@@ -27,20 +26,8 @@ pipeline {
                 }
             }
         }
-        
-        stage('Terraform Plan') {
-            steps {
-                script {
-                    sh "terraform plan -out=tfplan -input=false \
-                          -var 'acr_name=${ACR_NAME}' \
-                          -var 'aks_name=${AKS_NAME}' \
-                          -var 'resource_group_name=${AZURE_RESOURCE_GROUP}' \
-                           -var 'azure_region=eastus'"
-                }
-            }
-        }
-        
-         stage('Terraform Action') {
+
+        stage('Terraform Action') {
             steps {
                 script {
                     if (params.TERRAFORM_ACTION == 'apply') {
