@@ -24,7 +24,7 @@ pipeline {
                 script {
               //      withCredentials([azureServicePrincipal(credentialsId: 'azure-sp-credentials', tenantIdVariable: 'AZURE_TENANT_ID', clientIdVariable: 'AZURE_CLIENT_ID', clientSecretVariable: 'AZURE_CLIENT_SECRET')]) {
                     sh 'terraform init'
-                    }
+               //     }
                 }
             }
         }
