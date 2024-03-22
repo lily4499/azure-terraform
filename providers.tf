@@ -1,9 +1,9 @@
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  client_id     = var.TF_VAR_client_id
-  client_secret = var.TF_VAR_client_secret
-  tenant_id     = var.TF_VAR_tenant_id
+  client_id     = var.client_id
+  client_secret = var.client_secret
+  tenant_id     = var.tenant_id
 }
 
 # Azure Provider source and version being used
