@@ -14,7 +14,17 @@
 //  description = "Azure Tenant ID"
 //}
 
+variable "client_id" {
+  description = "The client ID for Azure"
+}
 
+variable "client_secret" {
+  description = "The client secret for Azure"
+}
+
+variable "tenant_id" {
+  description = "The tenant ID for Azure"
+}
 variable "acr_name" {
   description = "Name of the Azure Container Registry"
 }
