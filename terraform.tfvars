@@ -1,4 +1,4 @@
-resource_group_name = "lili_rg"
+resource_group_name = "lilirg"
 azure_region        = "eastus"
-acr_name            = "lili_acr"
-aks_name            = "lili_aks"
+acr_name            = "liliacr"
+aks_name            = "liliaks"
