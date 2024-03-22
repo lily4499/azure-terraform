@@ -4,6 +4,12 @@ pipeline {
     parameters {
         choice(name: 'TERRAFORM_ACTION', choices: ['apply', 'destroy'], description: 'Select Terraform action to perform')
     }
+
+    environment {
+        TF_VAR_client_id = credentials('client_id_credential_id')
+        TF_VAR_client_secret = credentials('client_secret_credential_id')
+        TF_VAR_tenant_id = credentials('tenant_id_credential_id')
+    }
     
     stages {
      //   stage('Azure Login') {
