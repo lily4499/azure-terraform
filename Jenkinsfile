@@ -9,6 +9,7 @@ pipeline {
         TF_VAR_client_id = credentials('client_id_credential_id')
         TF_VAR_client_secret = credentials('client_secret_credential_id')
         TF_VAR_tenant_id = credentials('tenant_id_credential_id')
+        TF_VAR_subscription_id = credentials('subscription_id_credential_id')
     }
     
     stages {
