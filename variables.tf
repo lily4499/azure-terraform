@@ -25,6 +25,10 @@ variable "client_secret" {
 variable "tenant_id" {
   description = "The tenant ID for Azure"
 }
+variable "subscription_id" {
+  description = "The subscription ID for Azure"
+}
+
 variable "acr_name" {
   description = "Name of the Azure Container Registry"
 }
