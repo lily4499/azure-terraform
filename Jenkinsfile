@@ -6,21 +6,14 @@ pipeline {
     }
 
     environment {
-        TF_VAR_client_id = credentials('client_id_credential_id')
-        TF_VAR_client_secret = credentials('client_secret_credential_id')
-        TF_VAR_tenant_id = credentials('tenant_id_credential_id')
-        TF_VAR_subscription_id = credentials('subscription_id_credential_id')
+        TF_VAR_client_id = credentials('lil-sp-client-id')
+        TF_VAR_client_secret = credentials('lil-sp-client-secret-id')
+        TF_VAR_tenant_id = credentials('lil-sp-tenant-id')
+        TF_VAR_subscription_id = credentials('lil-sp-subscription-id')
     }
     
     stages {
-     //   stage('Azure Login') {
-          //  steps {
-                // Authenticate using Azure CLI with user credentials
-               // sh 'az login'
-      //      }
-     //   }
-        
-        stage('Checkout') {
+       stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/lily4499/azure-terraform.git'
             }
@@ -29,10 +22,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-              //      withCredentials([string(credentialsId: 'azure-client-secret', variable: 'ARM_CLIENT_SECRET')]) {
-              //      withCredentials([azureServicePrincipal(credentialsId: 'azure-sp-credentials', tenantIdVariable: 'AZURE_TENANT_ID', clientIdVariable: 'AZURE_CLIENT_ID', clientSecretVariable: 'AZURE_CLIENT_SECRET')]) {
-                        sh 'terraform init'
-                 //   }
+                    sh 'terraform init'
                 }
             }
         }
